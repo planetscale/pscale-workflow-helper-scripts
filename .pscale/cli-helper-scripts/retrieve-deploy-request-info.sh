@@ -14,4 +14,4 @@ create-deploy-request-info "$DB_NAME" "$ORG_NAME" "$DEPLOY_REQUEST_NUMBER"
 create-diff-for-ci "$DB_NAME" "$ORG_NAME" "$DEPLOY_REQUEST_NUMBER" "$BRANCH_NAME" "update"
 
 . create-branch-connection-string.sh
-create-branch-connection-string "$DB_NAME" "$BRANCH_NAME" "$ORG_NAME" "creds-${BRANCH_NAME}" "sharesecret"
+create-branch-connection-string "$DB_NAME" "$BRANCH_NAME" "$ORG_NAME" "creds-${BRANCH_NAME}"

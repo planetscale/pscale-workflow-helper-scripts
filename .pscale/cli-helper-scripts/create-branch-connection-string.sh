@@ -3,7 +3,6 @@ function create-branch-connection-string {
     local BRANCH_NAME=$2
     local ORG_NAME=$3
     local CREDS=${4,,}
-    local secretshare=$5
 
     # delete password if it already existed
     # first, list password if it exists
@@ -45,11 +44,6 @@ EOF
     if [ -z "$CI" ]; then
         echo "In the next lines, you will see your secret, branch connection information: " 
         echo "$SECRET_TEXT"
-    elif [ -n "$secretshare" ]; then
-        # store the DB URL in secret store
-        echo "::notice ::Please follow the link in the next line and click on 'Read the Secret!' to see the secret, branch specific connection string for various frameworks."
-        local link=`curl -s -X POST -d "plain&secret=$SECRET_TEXT" https://shared-secrets-planetscale.herokuapp.com/`
-        echo "$link"
         echo "::set-output name=CONNECTION_STRING_LINK::${link}"
     fi
     echo
