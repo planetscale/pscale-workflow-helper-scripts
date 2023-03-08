@@ -4,7 +4,7 @@ RELEASE_VERSION=0.6
 PSCALE_CLI_HELPER_SCRIPTS_NAME=pscale-workflow-helper-scripts
 PSCALE_SCRIPTS_DIR=.pscale/
 
-curl -L -o ${PSCALE_CLI_HELPER_SCRIPTS_NAME}.zip https://github.com/jonico/pscale-cli-helper-scripts/archive/refs/tags/${RELEASE_VERSION}.zip
+curl -L -o ${PSCALE_CLI_HELPER_SCRIPTS_NAME}.zip https://github.com/planetscale/pscale-cli-helper-scripts/archive/refs/tags/${RELEASE_VERSION}.zip
 unzip -o ${PSCALE_CLI_HELPER_SCRIPTS_NAME}.zip
 
 # create .pscale directory

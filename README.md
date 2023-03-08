@@ -19,14 +19,14 @@ This is a collection of GitHub Workflows and CI/CD helper scripts around [Planet
 ### IssueOps Example
 
 ![image](https://user-images.githubusercontent.com/1872314/149749143-16a484ec-7ebf-41e3-9d93-c81c24876b1e.png)
-([example PR](https://github.com/jonico/pscale-cli-helper-scripts/pull/11))
+([example PR](https://github.com/planetscale/pscale-cli-helper-scripts/pull/11))
 
 ## Installation
 
-To test out the IssueOps commands and helper scripts, either work on a [copy of this repo](https://github.com/jonico/pscale-cli-helper-scripts/generate) or run the following command in the root directory of your GitHub repo's workspace and follow the suggestions of the script:
+To test out the IssueOps commands and helper scripts, either work on a [copy of this repo](https://github.com/planetscale/pscale-cli-helper-scripts/generate) or run the following command in the root directory of your GitHub repo's workspace and follow the suggestions of the script:
 
 ```bash
-curl https://raw.githubusercontent.com/jonico/pscale-workflow-helper-scripts/main/install.sh | bash
+curl https://raw.githubusercontent.com/planetscale/pscale-workflow-helper-scripts/main/install.sh | bash
 ```
 
 
@@ -37,7 +37,8 @@ curl https://raw.githubusercontent.com/jonico/pscale-workflow-helper-scripts/mai
 
 ### /ps-create: Create PlanetScale Deploy Request from your PR
 
-You can create a database branch and deploy request in an [already existing Pull Request](https://github.com/jonico/pscale-cli-helper-scripts/pull/2) using `/ps-create`:
+You can create a database branch and deploy request in an already existing Pull Request using `/ps-create`:
+
 ![image](https://user-images.githubusercontent.com/1872314/143734380-132bdd39-b4bc-4ec0-b1e8-79d31748542c.png)
 
 See [configuration section](#configuration) for an explanation of the environment variables to set to specify a PlanetScale org and database different from the default settings.
@@ -78,7 +79,7 @@ Stay tuned for updates and any feedbacks / PRs are welcome 😊
 
 In case you like to see those helper scripts in action without any further manual configuration, just 
 
-1. [Create a copy of this repo](https://github.com/jonico/pscale-cli-helper-scripts/generate) by clicking on the green 'Use this template' button or just [here](https://github.com/jonico/pscale-cli-helper-scripts/generate). Both private and public repo visibility work.
+1. [Create a copy of this repo](https://github.com/planetscale/pscale-cli-helper-scripts/generate) by clicking on the green 'Use this template' button or just [here](https://github.com/planetscale/pscale-cli-helper-scripts/generate). Both private and public repo visibility work.
 
 ![image](https://user-images.githubusercontent.com/1872314/141356169-d1dcc996-9e3f-41bc-b4cb-c96b5f0cb843.png)
 
@@ -98,7 +99,7 @@ See [configuration section](#configuration) for an explanation of the environmen
 
 ![image](https://user-images.githubusercontent.com/1872314/142614600-83d06471-b0bd-4c7a-81bb-d8836e547e78.png)
 
-If you start the ["Create branch/PR for schema change"](https://github.com/jonico/pscale-cli-helper-scripts/actions/workflows/create-db-branch-and-pr-dr.yml) workflow, a pull request like [this one](https://github.com/jonico/pscale-cli-helper-scripts/pull/2) will be created that is associated with a PlanetScale deploy request and the desired schema changes.
+If you start the ["Create branch/PR for schema change"](https://github.com/planetscale/pscale-cli-helper-scripts/actions/workflows/create-db-branch-and-pr-dr.yml) workflow, a pull request will be created that is associated with a PlanetScale deploy request and the desired schema changes.
 
 ![image](https://user-images.githubusercontent.com/1872314/144895567-85937eb8-25eb-4066-9863-8e834a108127.png)
 
