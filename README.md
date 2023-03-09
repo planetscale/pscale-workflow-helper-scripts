@@ -1,25 +1,14 @@
 # PlanetScale Workflow Helper scripts 
 
-📺 [DevOpsPro Talk](https://youtu.be/CafDHLmHf2s)
-
-📺 [Recording from live demo at PlanetScale Happy-Half-Hour](https://youtu.be/l3oe7srRUZw?t=610)
-
-📺[Longer talk at WeAreDevelopers DevOps Day](https://www.youtube.com/watch?v=ojyZ2KwiXPo&t=10786s)
-
-This is a collection of GitHub Workflows and CI/CD helper scripts around [PlanetScale's database branching workflows](https://docs.planetscale.com/concepts/branching) to:
+This is a collection of GitHub Workflows and CI/CD helper scripts around [PlanetScale's database branching workflows](https://planetscale.com/docs/concepts/branching) to:
 * [attach, create, update, approve, merge and delete](#issue-ops-based-workflows) PlanetScale branches and deploy requests directly from your Pull Requests
 * [wait for branch creation to be completed](.pscale/cli-helper-scripts/wait-for-branch-readiness.sh)
 * [wait for deploy requests to be successfully merged](.pscale/cli-helper-scripts/wait-for-deploy-request-merged.sh) (and get an update on the current migration status)
 * [DB connection string creation/parsing and extending scope of service tokens](.pscale/cli-helper-scripts/create-database.sh)
 * examples on how to create branches and deploy requests ([branches](.pscale/cli-helper-scripts/add-operation-column-and-index.sh), [credentials](.pscale/cli-helper-scripts/create-database.sh), [deploy requests](.pscale/cli-helper-scripts/merge-latest-open-deploy-request.sh)) in any CI/CD environment
-* [creating one-time links](.pscale/cli-helper-scripts/create-branch-connection-string.sh) with connection info for feature branches that correspond to your preview environments
+* [create a branch connection string](.pscale/cli-helper-scripts/create-branch-connection-string.sh) with connection info for feature branches that correspond to your preview environments
 * [run pscale from a Docker container](.pscale/cli-helper-scripts/use-pscale-docker-image.sh) and still use your local config files, service tokens and port forwarding
 * [delete databases](.pscale/cli-helper-scripts/remove-database.sh)
-
-### IssueOps Example
-
-![image](https://user-images.githubusercontent.com/1872314/149749143-16a484ec-7ebf-41e3-9d93-c81c24876b1e.png)
-([example PR](https://github.com/planetscale/pscale-cli-helper-scripts/pull/11))
 
 ## Installation
 
