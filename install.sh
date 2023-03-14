@@ -1,16 +1,33 @@
 #!/bin/bash
 
-if [ -n "$1" ];then
-  RELEASE_VERSION=$1
+RELEASE_VERSION=
+SKIP_ISSUEOPS=
+
+while getopts ':st:' opt; do
+  case "$opt" in
+    s) SKIP_ISSUEOPS="true" ;;
+    t) RELEASE_VERSION="$OPTARG" ;;
+  esac
+done
+
+if [ "" == "$RELEASE_VERSION" ];then
+  echo "Release tag not specified, fetching the latest version..."
+  LATEST_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/planetscale/pscale-workflow-helper-scripts/releases/latest)
+  RELEASE_VERSION=$(echo $LATEST_RELEASE | sed -e 's/.*"tag_name":"\([^"]*\)".*/\1/')
+  echo "Found version ${RELEASE_VERSION}!"
 else
-  RELEASE_VERSION=0.6
+  echo "Checking if version ${RELEASE_VERSION} exists..."
+  TAG_RELEASE=$(curl -L -s -H 'Accept: application/json' https://github.com/planetscale/pscale-workflow-helper-scripts/releases/${RELEASE_VERSION})
+  IS_ERROR=$(echo $TAG_RELEASE | sed -e 's/.*"error":"\([^"]*\)".*/\1/')
+  if [ "Not Found" == "$IS_ERROR" ]; then
+    echo "Cannot find version ${RELEASE_VERSION}."
+    exit 1
+  fi
 fi
 
 if [ "true" == "$2" ];then
   SKIP_ISSUEOPS="true"
 fi
-
-echo "SKIP_ISSUEOPS=${SKIP_ISSUEOPS}, 2nd param=$2"
 
 PSCALE_CLI_HELPER_SCRIPTS_NAME=pscale-workflow-helper-scripts
 PSCALE_SCRIPTS_DIR=.pscale/
@@ -24,12 +41,19 @@ mkdir -p ${PSCALE_SCRIPTS_DIR}
 # copy scripts to .pscale directory
 cp -r ${PSCALE_CLI_HELPER_SCRIPTS_NAME}-${RELEASE_VERSION}/.pscale/cli-helper-scripts ${PSCALE_SCRIPTS_DIR}/
 
+echo
+echo "Successfully installed pscale-workflow-helper-scripts"
+echo
+
 if [ "true" != "${SKIP_ISSUEOPS}" ];then
   # create .github/workflows directory
   mkdir -p .github/workflows
 
   # copy workflow to .github/workflows directory
   cp ${PSCALE_CLI_HELPER_SCRIPTS_NAME}-${RELEASE_VERSION}/.github/workflows/*.yml .github/workflows/
+
+  echo "Please run 'git add .pscale .github/workflows' and commit changes using 'git commit -m \"Add pscale helper scripts and IssueOps workflows\"'"
+  echo "Then run 'git push' to push changes"
 fi
 
 # remove zip file and extracted directory
@@ -37,17 +61,5 @@ rm ${PSCALE_CLI_HELPER_SCRIPTS_NAME}.zip
 rm -rf ${PSCALE_CLI_HELPER_SCRIPTS_NAME}-${RELEASE_VERSION}
 
 echo
-echo "Successfully installed pscale-workflow-helper-scripts"
+echo "All done!"
 echo
-
-if [ "true" != "${SKIP_ISSUEOPS}" ];then
-  echo "Please run 'git add .pscale .github/workflows' and commit changes using 'git commit -m \"Add pscale helper scripts and IssueOps workflows\"'"
-  echo "Then run 'git push' to push changes"
-fi
-
-
-
-
-
-
-

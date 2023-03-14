@@ -1,4 +1,4 @@
-# PlanetScale Workflow Helper scripts 
+# PlanetScale Workflow Helper scripts
 
 This is a collection of GitHub Workflows and CI/CD helper scripts around [PlanetScale's database branching workflows](https://planetscale.com/docs/concepts/branching) to:
 * [attach, create, update, approve, merge and delete](#issue-ops-based-workflows) PlanetScale branches and deploy requests directly from your Pull Requests
@@ -18,6 +18,10 @@ To test out the IssueOps commands and helper scripts, either work on a [copy of 
 curl https://raw.githubusercontent.com/planetscale/pscale-workflow-helper-scripts/main/install.sh | bash
 ```
 
+This will download and install the latest release of the package to your repository. Alternatively, you may download the `install.sh` script and run it manually with the following parameters for additional flexibility:
+
+- `-t {RELEASE_TAG}` &mdash; This allows you to provide the specific release version tag to download and install.
+- `-s` &mdash; Providing this switch will still install the helpers scripts into the `.pscale` directory of the repository, but skip installing the default workflows provided for IssueOps commands. This is helpful if you wish to use the scripts to build custom workflows.
 
 ## Issue-Ops based workflows
 
@@ -66,7 +70,7 @@ Stay tuned for updates and any feedbacks / PRs are welcome 😊
 
 ## Zero-setup Action workflows included :sparkles:
 
-In case you like to see those helper scripts in action without any further manual configuration, just 
+In case you like to see those helper scripts in action without any further manual configuration, just
 
 1. [Create a copy of this repo](https://github.com/planetscale/pscale-cli-helper-scripts/generate) by clicking on the green 'Use this template' button or just [here](https://github.com/planetscale/pscale-cli-helper-scripts/generate). Both private and public repo visibility work.
 
