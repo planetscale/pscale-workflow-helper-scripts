@@ -25,10 +25,6 @@ else
   fi
 fi
 
-if [ "true" == "$2" ];then
-  SKIP_ISSUEOPS="true"
-fi
-
 PSCALE_CLI_HELPER_SCRIPTS_NAME=pscale-workflow-helper-scripts
 PSCALE_SCRIPTS_DIR=.pscale/
 
